@@ -1,0 +1,38 @@
+h1 {
+  color: #002561;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+  color: #002561;
+  font-family: Arial, Helvetica, sans-serif;
+}
+div.table {
+  position: absolute;
+  right: 0;
+  top: 50;
+  width: 30%;
+}
+#map {
+  height: 500px;
+  width: 68%;
+}
+#accTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+}
+table {
+    table-layout: fixed;
+    width: 95%;
+}
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+th {
+  background-color: #002561;
+  color: white;
+}

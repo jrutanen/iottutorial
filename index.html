@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+ <meta charset="ISO-8859-1"> 
+  <head>
+    <link rel="stylesheet" type="text/css" href="iot_tutorial.css">
+  </head>
+  <body>
+    <h1>IoT Tutorial</h1>
+    <div class="table">
+      <button type="button"
+        onclick="markerAnimation()">
+        Start Simulation
+      </button>
+      <h3>Transportation Quality</h3>
+      <table id="accTable">
+        <tr>
+          <th width="70%">Location</th>
+          <th>Status</th>
+        </tr>
+      </table>
+    </div>
+    <div id="map"></div>
+    <script>
+      var marker
+      var devicePosition
+      var image = 'images/truck.png';
+      var locations = [['55.6180236', '12.6507628'], ['55.593505', '12.764238'], ['55.568821', '12.854326'], ['55.549559', '12.9554'],
+                       ['55.548161', '13.055101'],['55.592574', '13.117723'], ['55.641587', '13.103441'], ['55.675829', '13.183916'],
+                       ['55.698434', '13.213579'], ['55.716675', '13.227346']]
+      var i = 0
+
+      function getLocationForDevice() {
+        return new google.maps.LatLng(Number(locations[i][0]), Number(locations[i][1]));
+      }
+
+      function updateAccData() {
+        var table = document.getElementById("accTable");
+        var row = table.insertRow(-1);
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+
+        cell0.innerHTML = locations[i][0] + ", " + locations[i][1];
+        cell1.innerHTML = "OK";
+      }
+
+      function resetTable(tableName) {
+        while (document.getElementById(tableName).rows.length > 1) {
+          document.getElementById(tableName).deleteRow(-1);
+        }
+      }
+
+      function markerAnimation(){
+        resetTable("accTable");
+        var anim = setInterval(updateDevicePosition, 2000);
+
+        function updateDevicePosition() {
+          var latlng = getLocationForDevice();
+          marker.setPosition(latlng);
+          updateAccData();
+          i++;
+          if (i == locations.length) {
+            i = 0;
+            clearInterval(anim);
+          }
+        }
+      }
+
+      function initMap() {
+        var oresund = {lat: 55.6407331, lng: 12.9263099};
+        devicePosition = {lat: 55.6180236, lng: 12.6507628};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: oresund
+        });
+
+        marker = new google.maps.Marker({
+          position: devicePosition,
+          map: map,
+          icon: image
+        });
+//        marker.addListener('click', markerAnimation);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=API-KEY_HERE&callback=initMap">
+    </script>
+  </body>
+</html>
