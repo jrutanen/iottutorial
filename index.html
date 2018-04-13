@@ -11,11 +11,13 @@
         onclick="markerAnimation()">
         Start Simulation
       </button>
-      <h3>Transportation Quality</h3>
+      <h3>Sensor Data</h3>
       <table id="accTable">
         <tr>
-          <th width="70%">Location</th>
-          <th>Status</th>
+          <th width="45%">Location</th>
+          <th>Temp</th>
+          <th>Hum</th>
+          <th>Acc</th>
         </tr>
       </table>
     </div>
@@ -38,9 +40,13 @@
         var row = table.insertRow(-1);
         var cell0 = row.insertCell(0);
         var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        var cell3 = row.insertCell(3);
 
         cell0.innerHTML = locations[i][0] + ", " + locations[i][1];
-        cell1.innerHTML = "OK";
+        cell1.innerHTML = "20.5 C";
+        cell2.innerHTML = "74%";
+        cell3.innerHTML = "OK";
       }
 
       function resetTable(tableName) {
@@ -82,7 +88,7 @@
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=API-KEY_HERE&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=ADD-YOUR-MAP-API-KEY-HERE&callback=initMap">
     </script>
   </body>
 </html>
