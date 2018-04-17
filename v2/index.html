@@ -29,7 +29,10 @@
       //Variables used in the map
       var marker;
       var markerIcon = 'images/truck.png';
+      //global variable for the device position
       var devicePosition;
+      //global variable for the device temperature
+      var deviceTemperature;
       //Simulated locations for the iot device
       var locations = [['55.6180236', '12.6507628'], ['55.593505', '12.764238'], ['55.568821', '12.854326'], ['55.549559', '12.9554'],
                        ['55.548161', '13.055101'],['55.592574', '13.117723'], ['55.641587', '13.103441'], ['55.675829', '13.183916'],
@@ -81,7 +84,7 @@
       //Loop to update the device position. Used with simulated data for now
       function markerAnimation(){
         //get Ids for the smart objects
-        updateReport(updateSmartObjectIds());
+        updateReport(getSmartObjectIds());
         //i is index for the simulated location data
         i = 0;
         //Clear interval timer
