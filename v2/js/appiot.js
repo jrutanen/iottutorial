@@ -51,10 +51,10 @@ function getLatestLocationValue() {
       for (var item = 0; item < res.body.Resources.length; item++){
         // look for the entry with a matching `name` value
         if (res.body.Resources[item].Name == 'Latitude'){
-            lon = res.body.Resources[item].LatestMeasurement.sv;
+            lat = res.body.Resources[item].LatestMeasurement.sv;
         }
         if (res.body.Resources[item].Name == 'Longitude'){
-            lat = res.body.Resources[item].LatestMeasurement.sv;
+            lon = res.body.Resources[item].LatestMeasurement.sv;
         }
       }
       devicePosition = {lat: lat, lng: lon};
