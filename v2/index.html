@@ -38,6 +38,8 @@
                        ['55.548161', '13.055101'],['55.592574', '13.117723'], ['55.641587', '13.103441'], ['55.675829', '13.183916'],
                        ['55.698434', '13.213579'], ['55.716675', '13.227346']]      //Variables used for the animation
       var anim;
+      // Frequency to fetch data
+      var updateInterval = 2000; //ms
       var i = 0
 
       //This function can be used to print debug information under the map
@@ -94,7 +96,7 @@
         //Clear debug data
         document.getElementById("console").innerHTML = "";
         //Start interval timer, for every 2 seconds function updateDevicePosition is called
-        anim = setInterval(updateDevicePosition, 2000);
+        anim = setInterval(updateDevicePosition, updateInterval);
 
         //This function updates the marker position in the map
         function updateDevicePosition() {
